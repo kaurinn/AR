@@ -1,5 +1,4 @@
 
-
 BITS	32
 
 	org     0x00200000
@@ -131,4 +130,3 @@ ClearScreenCodes:
 	db	27, 91, 50, 74, 27, 91, 49, 59, 49, 72
 
 fileSize	equ	$ - $$
-
