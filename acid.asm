@@ -1,8 +1,4 @@
 
-; nasm -f bin -o acid acid.S
-; chmod +x acid
-; 209 bytes
-
 BITS	32
 
 %define lines			13
@@ -111,7 +107,7 @@ nano_t:
 	dd	0,50000000							; Input to nanosleep()
 
 term_clr:
-	db	27,91,50,74,27,91,49,59,49,72		; Clear screen VT100 codes
+	db	27,91,50,74,27,91,72				; Clear screen VT100 codes
 
 datasection:
 	;times 260	db	0
