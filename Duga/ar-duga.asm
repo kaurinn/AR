@@ -1,13 +1,14 @@
+
+
 BITS	32
 
 	org     0x00200000
 
 	db      0x7F, "ELF"             ; e_ident
-	db      1, 1, 1
 
 Main:
 	mov    	ebx, NanoData
-	mov		al, 0xA2
+	mov		esi, 370
 	jmp		short ResumeMain
 
 	dw      2						; e_type
@@ -27,12 +28,9 @@ phdr:
 									; e_shstrndx
 	dd      fileSize								; p_memsz
 	dd      7										; p_flags
-	dd      0x1000									; p_align
 
 ResumeMain:
-	;xor		ebp, ebp
-	push	370
-	pop		esi
+	mov		al, 0xA2
 	int		0x80
 
 	push	1
@@ -104,11 +102,6 @@ PrintString:
 	jnz		UpdateColor
 	jmp		Main
 
-	;xor		eax, eax
-	;inc		eax
-	;xor		ebx, ebx
-	;int		0x80
-
 ; DATA
 
 TextTable:
@@ -126,6 +119,7 @@ NanoData:
 	dd	0, 70000000
 
 ClearScreenCodes:
-	db	27, 91, 50, 74, 27, 91, 49, 59, 49, 72
+	db	27, 91, 50, 74, 27, 91, 72
 
 fileSize	equ	$ - $$
+
